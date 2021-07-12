@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register New Account</title>
+    <style>
+        div.form-control {
+            padding-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div>
+        <div><a href="/">Home</a> | <a href="/cadman/account/list">Accounts</a></div>
+        <h1>Register New Form</h1>
+
+        <form action="#" th:action="@{/cadman/account/accounts/new}" th:object="${account}"
+              method="post">
+            <fieldset>
+                <input type="hidden" name="customerId" th:value="${id}"/>
+
+                <div class="form-control">
+                    <label>Customer Number</label>
+                    <label style="color: red" th:if="${#fields.hasErrors('customerNumber')}"
+                           th:errors="*{accountNumber}" th:class="'error'"></label>
+                    <input type="text" class="form-control" th:field="*{accountNumber}">
+                    <!--				<div class="invalid-feedback">Please choose a username.</div>-->
+
+                </div>
+
+
+                <div class="form-control">
+                    <label>Account Type </label>
+                    <label style="color: red" th:if="${#fields.hasErrors('accountType')}" th:errors="*{accountType}"
+                           th:class="'error'"></label>
+                    <input type="text" class="form-control" th:field="*{accountType}">
+
+                </div>
+                <div class="form-control">
+                    <label>Phone Contact Number</label>
+                    <input type="text"  class="form-control" th:field="*{contactPhoneNumber}">
+
+                </div>
+
+                <<div class="col-md-6">
+                <div class="form-group">
+                    <label> Date Opened</label>
+                    <input type="date" class="form-control" th:field="*{dateOpened}"> <label style="color: red"
+                                                                                              th:if="${#fields.hasErrors('dateOpened')}"
+                                                                                              th:errors="*{dateOpened}"
+                                                                                              th:class="'error'"></label>
+                </div>
+            </div>
+
+
+                <div style="float: right;">
+                    <button id="btnReset" type="reset"
+                            style="margin-right: 2em;">Reset
+                    </button>
+                    <a href="/cadman/account/list" class="btn btn-outline-warning"
+                       style="margin-right: 2em;">Cancel</a>
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Register Account</button>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+</main>
+
+</body>
+</html>
