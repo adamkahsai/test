@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register New Customer</title>
+    <style>
+        div.form-control {
+            padding-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+<main>
+<div>
+    <div><a href="/">Home</a> | <a href="/customers/list">Customers</a></div>
+    <h1>Register New Form</h1>
+
+<form action="#" th:action="@{/customers/new}" th:object="${customer}"
+      method="post">
+    <fieldset>
+    <input type="hidden" name="customerId" th:value="${id}"/>
+
+    <div class="form-control">
+        <label>Customer Number</label>
+        <label style="color: red" th:if="${#fields.hasErrors('customerNumber')}"
+               th:errors="*{customerNumber}" th:class="'error'"></label>
+        <input type="text" class="form-control" th:field="*{customerNumber}">
+        <!--				<div class="invalid-feedback">Please choose a username.</div>-->
+
+    </div>
+
+
+        <div class="form-control">
+                     <label>Name </label>
+                        <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                        th:class="'error'"></label>
+                    <input type="text" class="form-control" th:field="*{name}">
+
+        </div>
+        <div class="form-control">
+                    <label>Phone Contact Number</label>
+                    <input type="text"  class="form-control" th:field="*{contacPhonetNumber}">
+
+        </div>
+
+        <div class="form-control">
+                <label> Date Of Birth</label>
+                <input type="date" class="form-control" th:field="*{dateOfBirth}"> <label style="color: red"
+                                                                                          th:if="${#fields.hasErrors('dateOfBirth')}"
+                                                                                          th:errors="*{dateOfBirth}"
+                                                                                          th:class="'error'"></label>
+        </div>
+
+
+    <div style="float: right;">
+        <button id="btnReset" type="reset"
+                style="margin-right: 2em;">Reset
+        </button>
+        <a href="/customers/list" class="btn btn-outline-warning"
+           style="margin-right: 2em;">Cancel</a>
+        <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Register Customer</button>
+    </div>
+
+    </fieldset>
+</form>
+
+</div>
+</main>
+
+</body>
+</html>
